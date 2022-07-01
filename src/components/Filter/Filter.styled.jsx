@@ -2,19 +2,19 @@ import styled from "styled-components";
 
 export const Label = styled.label`
         display: block;
-        font-size: 18px;
+        font-size: ${p => p.theme.fontSizes.m}px;
         color: #14331B;
-        margin-bottom: 15px;
+        margin-bottom: ${p => p.theme.space[4]}px;
 `;
 
 export const Input = styled.input.attrs({
     type: 'text',
 })`
     width: 200px;
-    padding: 5px;
-    margin-left: 15px;
-    font-size: 12px;
-    background: #9A9B9A;
+    padding: ${p => p.theme.space[2]}px;
+    margin-left: ${p => p.theme.space[4]}px;
+    font-size: ${p => p.theme.fontSizes.xs}px;
+    background: ${p => p.theme.colors.primary};
     outline: none;
     border: 2px solid #14331B;
     border-radius: 5px;
