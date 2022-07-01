@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { nanoid } from "nanoid";
-import { Formik } from 'formik';
+// import { Formik } from 'formik';
 import {Form, Label, Input, Button} from './ContactForm.styled';
 
 const INITIAL_STATE = {
