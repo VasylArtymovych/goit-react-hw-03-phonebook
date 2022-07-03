@@ -5,6 +5,7 @@ import Filter from "components/Filter";
 import {Container, Title} from './App.styled';
 import { Box } from "components/Box/Box";
 
+const SAVE_CONTACTS_KEY = 'contacts';
 
 class App extends Component {
   state = {
@@ -16,6 +17,25 @@ class App extends Component {
     ],
     filter: '',
   };
+
+  componentDidMount(){
+    const savedContacts = localStorage.getItem(SAVE_CONTACTS_KEY);
+
+    if(savedContacts){
+      const contacts = JSON.parse(savedContacts);
+      this.setState({
+        contacts,
+      })
+    }
+  }
+
+  componentDidUpdate(_, prevState){
+    const {contacts} = this.state;
+    
+    if(prevState.contacts !== contacts){
+      localStorage.setItem(SAVE_CONTACTS_KEY, JSON.stringify(contacts));
+    }
+  }
 
 
   addContact = (newContact) => {
@@ -62,7 +82,7 @@ class App extends Component {
         <ContactForm addContact={this.addContact}/>
 
         <Title>Contacts</Title>
-        <Filter onChange={this.inputChangeHandler}/>
+        <Filter value={this.state.filter} onChange={this.inputChangeHandler}/>
         <ContactList contacts={filteredContacts} onDelete={this.deleteContact}/> 
       </Container>
       </Box>

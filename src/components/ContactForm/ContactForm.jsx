@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { nanoid } from "nanoid";
+import PropTypes from 'prop-types';
 // import { Formik } from 'formik';
 import {Form, Label, Input, Button} from './ContactForm.styled';
 
@@ -9,6 +10,10 @@ const INITIAL_STATE = {
 };
 
 class ContactForm extends Component {
+    static propTypes = {
+        addContact: PropTypes.func.isRequired,
+    };
+
     state = {...INITIAL_STATE}
 
     inputNameId = nanoid(12);
